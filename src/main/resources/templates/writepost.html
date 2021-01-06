@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>글쓰기</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>글쓰기</h1>
+
+<form id="post">
+    <label for="board">게시판</label>
+    <select name="postType" id="board">
+        <option th:each="board : ${boards}" th:value="${board.boardID}" th:text="${board.name}"></option>
+    </select><br>
+    <label for="title">제목</label>
+    <input type="text" id="title" name="title"><br>
+    <label for="contents">내용</label><br>
+    <textarea type="text" id="contents" name="contents" ></textarea><br>
+    <button id="btn">Submit</button>
+</form>
+<script src="js/writepost.js"></script>
+</body>
+</html>

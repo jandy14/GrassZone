@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판</title>
+    <style>
+        table {
+            width: 100%;
+            border: 1px solid #444444;
+        }
+        th, td {
+            border: 1px solid #444444;
+        }
+    </style>
+</head>
+<body>
+<h1>게시판</h1>
+<a href="/signout"><button>로그아웃</button></a><br><br>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <td value="0"><a href="/board?boardID=0">전체</a></td>
+            <td th:each="board : ${boards}" th:value="${board.boardID}">
+                <a th:href="@{/board(boardID=${board.boardID})}" th:text="${board.name}"></a>
+
+            </td>
+        </tr>
+        </thead>
+    </table>
+</div>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <td>번호</td>
+            <td>분류</td>
+            <td>제목</td>
+            <td>글쓴이</td>
+            <td>시간</td>
+            <td>조회수</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="post : ${posts}">
+            <td th:text="${post.postID}"></td>
+            <td th:text="${post.postTypeName}"></td>
+            <td><a th:href="@{/post/{id}/before(id=${post.postID})}" th:text="${post.title}"></a></td>
+            <td th:text="${post.authorName}"></td>
+            <td th:text="${post.creationTime}"></td>
+            <td th:text="${post.views}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<a href="/writepost"><button>글쓰기</button></a>
+</body>
+</html>

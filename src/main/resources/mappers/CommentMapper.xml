@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jandy.grasszone.dao.CommentDAO">
+    <select id="GetPostComments" parameterType="int"
+            resultType="com.jandy.grasszone.dto.CommentDTO">
+        SELECT commentID, contents, users.name as authorName, comments.creationTime as creationTime
+        FROM comments
+        INNER JOIN users ON (comments.author = users.userNum)
+        WHERE comments.postID = #{postID}
+    </select>
+    <insert id="MakeComment" parameterType="com.jandy.grasszone.dto.CommentDTO">
+        INSERT INTO comments (postID, contents, author) VALUES (#{postID}, #{contents}, #{author})
+    </insert>
+</mapper>

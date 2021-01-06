@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jandy.grasszone.dao.PostDAO">
+    <insert id="MakePost" parameterType="com.jandy.grasszone.dto.PostDTO">
+        INSERT INTO posts (title, contents, postType, author) VALUES (#{title}, #{contents}, #{postType}, #{author});
+    </insert>
+    <select id="GetPostsWithBoard" parameterType="com.jandy.grasszone.dto.BoardDTO"
+            resultType="com.jandy.grasszone.dto.PostDTO">
+        SELECT postID, title, boards.name as postTypeName, posts.creationTime, users.name as authorName, views
+        FROM posts
+        INNER JOIN boards ON (posts.postType = boards.boardID)
+        INNER JOIN users ON (posts.author = users.userNum)
+        WHERE postType=#{boardID}
+        ORDER BY postID
+    </select>
+    <select id="GetAllPosts" resultType="com.jandy.grasszone.dto.PostDTO">
+        SELECT postID, title, boards.name as postTypeName, posts.creationTime, users.name as authorName, views
+        FROM posts
+        INNER JOIN boards ON (posts.postType = boards.boardID)
+        INNER JOIN users ON (posts.author = users.userNum)
+        ORDER BY postID
+    </select>
+    <select id="GetPostWithPostID" parameterType="int"
+            resultType="com.jandy.grasszone.dto.PostDTO">
+        SELECT postID, title, boards.name as postTypeName, posts.creationTime, users.name as authorName, contents, views
+        FROM posts
+        INNER JOIN boards ON (posts.postType = boards.boardID)
+        INNER JOIN users ON (posts.author = users.userNum)
+        WHERE posts.postID=#{postID}
+    </select>
+    <update id="IncreaseViews" parameterType="int">
+        UPDATE posts SET views = views + 1 WHERE postID=#{postID}
+    </update>
+</mapper>

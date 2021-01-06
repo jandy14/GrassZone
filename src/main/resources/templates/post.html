@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${post.title}"></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        table {
+            border: 1px solid #444444;
+        }
+        th, td {
+            border: 1px solid #444444;
+        }
+    </style>
+</head>
+<body>
+<h1>게시판</h1>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <td>번호</td>
+            <td>분류</td>
+            <td>제목</td>
+            <td>글쓴이</td>
+            <td>작성시간</td>
+            <td>조회수</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${post.postID}"></td>
+            <td th:text="${post.postTypeName}"></td>
+            <td th:text="${post.title}"></td>
+            <td th:text="${post.authorName}"></td>
+            <td th:text="${post.creationTime}"></td>
+            <td th:text="${post.views}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <pre th:text="${post.contents}"></pre>
+</div><br><br><br>
+
+<div id="comments">
+    <table>
+        <thead>
+        <tr>
+            <td>글쓴이</td>
+            <td>내용</td>
+            <td>시간</td>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+
+<form id="comment">
+    <input type="hidden" th:value="${post.postID}" name="postID">
+    <label for="contents">댓글</label><br>
+    <textarea type="text" id="contents" name="contents" ></textarea><br>
+    <button id="btn">Submit</button>
+</form>
+<script src="/js/post.js"></script>
+</body>
+</html>
