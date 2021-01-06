@@ -3,20 +3,21 @@ function SetComments(postNumber) {
         url: "/comments/" + postNumber,
         type: "GET",
         success: function(result){
-            const trStart = "<tr>";
-            const trEnd = "</tr>";
-            const tdStart = "<td>";
-            const tdEnd = "</td>";
-
-            for(key in result) {
-                let comment = "";
-                comment += trStart;
-                comment += tdStart + result[key]["authorName"] + tdEnd;
-                comment += tdStart + result[key]["contents"] + tdEnd;
-                comment += tdStart + result[key]["creationTime"] + tdEnd;
-                comment += trEnd;
-                $("#comments tbody").append(comment);
-            }
+            // const trStart = "<tr>";
+            // const trEnd = "</tr>";
+            // const tdStart = "<td>";
+            // const tdEnd = "</td>";
+            //
+            // for(key in result) {
+            //     let comment = "";
+            //     comment += trStart;
+            //     comment += tdStart + result[key]["authorName"] + tdEnd;
+            //     comment += tdStart + result[key]["contents"] + tdEnd;
+            //     comment += tdStart + result[key]["creationTime"] + tdEnd;
+            //     comment += trEnd;
+            //     $("#comments tbody").append(comment);
+            // }
+            $("#comments tbody").append(result);
         },
         error: function (){
             throw new Error("댓글 불러오기 실패");

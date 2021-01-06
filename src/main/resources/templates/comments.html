@@ -1,0 +1,5 @@
+<tr xmlns:th="http://www.thymeleaf.org" th:each="comment : ${comments}">
+    <td th:text="${comment.authorName}"></td>
+    <td th:text="${comment.contents}"></td>
+    <td th:text="${comment.creationTime}"></td>
+</tr>
