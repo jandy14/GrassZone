@@ -41,9 +41,6 @@ public class RestInfoController {
         HttpSession session = req.getSession();
         UserDTO userDTO = (UserDTO)session.getAttribute("user");
 
-        if(ControllerUtil.IsSignedIn(req) != true)
-            return "fail login";
-
         postDTO.setAuthor(userDTO.getUserNum());
         postDAO.MakePost(postDTO);
         System.out.println("submitting...");

@@ -21,23 +21,17 @@ public class PostController {
 
     @GetMapping("/writepost")
     public String WritePost(Model model, HttpServletRequest req) throws Exception {
-        if(ControllerUtil.IsSignedIn(req) != true)
-            return "redirect:/";
         model.addAttribute("boards", boardDAO.GetAllBoard());
         return "writepost.html";
     }
     @GetMapping("/post/{postID}/before")
     public String BeforeViewPost(Model model, @PathVariable("postID") int postID, HttpServletRequest req) throws Exception {
-        if(ControllerUtil.IsSignedIn(req) != true)
-            return "redirect:/";
         System.out.println(postID);
         postDAO.IncreaseViews(postID);
         return "redirect:/post/"+postID;
     }
     @GetMapping("/post/{postID}")
     public String ViewPost(Model model, @PathVariable("postID") int postID, HttpServletRequest req) throws Exception {
-        if(ControllerUtil.IsSignedIn(req) != true)
-            return "redirect:/";
         PostDTO postDTO = postDAO.GetPostWithPostID(postID);
         model.addAttribute("post", postDTO);
         return "post.html";

@@ -32,8 +32,6 @@ public class CommentController {
 //        System.out.println(commentDTO.toString());
         HttpSession session = req.getSession();
         UserDTO userDTO = (UserDTO)session.getAttribute("user");
-        if(ControllerUtil.IsSignedIn(req) != true)
-            return "fail signin";
         commentDTO.setAuthor(userDTO.getUserNum());
         commentDAO.MakeComment(commentDTO);
         return "success";

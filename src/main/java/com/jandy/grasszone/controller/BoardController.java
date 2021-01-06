@@ -22,8 +22,6 @@ public class BoardController {
     @GetMapping(value = "/board")
     public String BoardMain(BoardDTO boardDTO, Model model, HttpServletRequest req) throws Exception {
         System.out.println(boardDTO.toString());
-        if(ControllerUtil.IsSignedIn(req) != true)
-            return "redirect:/";
         if(boardDTO.getBoardID() == 0) {
             model.addAttribute("posts", postDAO.GetAllPosts());
         }

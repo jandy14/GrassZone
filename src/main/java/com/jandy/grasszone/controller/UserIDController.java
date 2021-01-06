@@ -17,8 +17,6 @@ public class UserIDController {
     @GetMapping(value = "/")
     public String MainPage(HttpServletRequest req)
     {
-        if(ControllerUtil.IsSignedIn(req))
-            return "redirect:/board";
         return "signin.html";
     }
     @GetMapping(value = "/signup")
