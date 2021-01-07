@@ -19,7 +19,7 @@ public class CommentController {
     @Autowired
     private CommentDAO commentDAO;
 
-    @GetMapping("/comments/{postID}")
+    @GetMapping("/comment/{postID}")
     public ModelAndView GetPostComments(@PathVariable("postID") int postID ) throws Exception {
         List<CommentDTO> comments = commentDAO.GetPostComments(postID);
 //        System.out.println(comments);
@@ -27,7 +27,7 @@ public class CommentController {
         modelAndView.addObject("comments", comments);
         return modelAndView;
     }
-    @PostMapping("/submitcomment")
+    @PostMapping("/comment/submit")
     public String MakeComment(CommentDTO commentDTO, HttpServletRequest req) throws Exception {
 //        System.out.println(commentDTO.toString());
         HttpSession session = req.getSession();

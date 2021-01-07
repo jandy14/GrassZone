@@ -1,6 +1,6 @@
 function SetComments(postNumber) {
     $.ajax({
-        url: "/comments/" + postNumber,
+        url: "/comment/" + postNumber,
         type: "GET",
         success: function(result){
             // const trStart = "<tr>";
@@ -33,7 +33,7 @@ $(document).ready( function () {
         e.preventDefault();
 
         $.ajax({
-            url: "/submitcomment",
+            url: "/comment/submit",
             type: "POST",
             data: $("form#comment").serialize(),
             success: function(result){

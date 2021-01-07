@@ -6,7 +6,7 @@
 //             data.append(pair[0], pair[1]);
 //         }
 //
-//         fetch("/submitpost", {
+//         fetch("/post/submit", {
 //             method: "POST",
 //             body: data,
 //         }).then(function (res) {
@@ -32,7 +32,7 @@ $(document).ready( function () {
     $("#btn").on("click", function(event) {
        event.preventDefault();
         $.ajax({
-            url: "/submitpost",
+            url: "/post/submit",
             type: "POST",
             data: $("#post").serialize(),
             success: function(result){

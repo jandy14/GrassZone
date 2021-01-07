@@ -36,7 +36,7 @@ public class RestInfoController {
     }
 
     @ResponseBody
-    @PostMapping(value="/submitpost")
+    @PostMapping(value="/post/submit")
     public String SubmitPost(PostDTO postDTO, HttpServletRequest req) throws Exception {
         HttpSession session = req.getSession();
         UserDTO userDTO = (UserDTO)session.getAttribute("user");

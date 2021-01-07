@@ -19,7 +19,7 @@ public class PostController {
     @Autowired
     private PostDAO postDAO;
 
-    @GetMapping("/writepost")
+    @GetMapping("/post/write")
     public String WritePost(Model model, HttpServletRequest req) throws Exception {
         model.addAttribute("boards", boardDAO.GetAllBoard());
         return "writepost.html";
