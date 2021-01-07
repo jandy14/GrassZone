@@ -38,7 +38,7 @@ $(document).ready( function () {
             success: function(result){
                 if(result == "success") {
                     alert("작성 완료!!");
-                    window.location.href = '/';
+                    window.location.href = '/board';
                 }
                 else if(result == "fail login") {
                     window.location.href = '/';
