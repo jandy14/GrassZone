@@ -60,6 +60,8 @@ $(document).ready( function () {
         event.preventDefault();
         const boardID = event.target.closest("#pages").getAttribute("value");
         const pageNum = event.target.getAttribute("value");
+        const query = "?boardID=" + boardID + "&pageNum=" + pageNum;
+        window.history.pushState(null,null, "/board" + query)
         ClearPosts();
         SetPosts(pageNum, boardID, postCountInPage);
     });
@@ -68,6 +70,7 @@ $(document).ready( function () {
         const boardID = event.target.getAttribute("value");
         const query = "?boardID=" + boardID + "&pageNum=" + 1;
         window.history.pushState(null,null, "/board" + query)
+        $("#pages")[0].setAttribute("value", boardID);
         ClearPosts();
         SetPosts(1, boardID, postCountInPage);
         ClearPageNavigation();
