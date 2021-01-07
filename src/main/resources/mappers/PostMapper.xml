@@ -33,4 +33,23 @@
     <update id="IncreaseViews" parameterType="int">
         UPDATE posts SET views = views + 1 WHERE postID=#{postID}
     </update>
+    <select id="GetPostsByBoardAndPageNum"
+            resultType="com.jandy.grasszone.dto.PostDTO">
+        SELECT postID, title, boards.name as postTypeName, posts.creationTime, users.name as authorName, views
+        FROM posts
+        INNER JOIN boards ON (posts.postType = boards.boardID)
+        INNER JOIN users ON (posts.author = users.userNum)
+        WHERE postType=#{boardID}
+        ORDER BY postID
+        LIMIT #{startIndex}, #{postCount}
+    </select>
+    <select id="GetPostsByPageNum"
+            resultType="com.jandy.grasszone.dto.PostDTO">
+        SELECT postID, title, boards.name as postTypeName, posts.creationTime, users.name as authorName, views
+        FROM posts
+        INNER JOIN boards ON (posts.postType = boards.boardID)
+        INNER JOIN users ON (posts.author = users.userNum)
+        ORDER BY postID
+        LIMIT #{startIndex}, #{postCount}
+    </select>
 </mapper>

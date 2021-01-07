@@ -1,0 +1,8 @@
+<tr xmlns:th="http://www.thymeleaf.org" th:each="post : ${posts}">
+    <td th:text="${post.postID}"></td>
+    <td th:text="${post.postTypeName}"></td>
+    <td><a th:href="@{/post/{id}/before(id=${post.postID})}" th:text="${post.title}"></a></td>
+    <td th:text="${post.authorName}"></td>
+    <td th:text="${post.creationTime}"></td>
+    <td th:text="${post.views}"></td>
+</tr>
