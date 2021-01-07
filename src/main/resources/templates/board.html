@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>게시판</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
         table {
             width: 100%;
@@ -17,20 +18,18 @@
 <h1>게시판</h1>
 <a href="/signout"><button>로그아웃</button></a><br><br>
 <div>
-    <table>
+    <table id="boards">
         <thead>
         <tr>
-            <td value="0"><a href="/board?boardID=0">전체</a></td>
-            <td th:each="board : ${boards}" th:value="${board.boardID}">
-                <a th:href="@{/board(boardID=${board.boardID})}" th:text="${board.name}"></a>
-
+            <td value="0">전체</td>
+            <td th:each="board : ${boards}" th:value="${board.boardID}" th:text="${board.name}">
             </td>
         </tr>
         </thead>
     </table>
 </div>
 <div>
-    <table>
+    <table id="posts">
         <thead>
         <tr>
             <td>번호</td>
@@ -42,17 +41,27 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="post : ${posts}">
-            <td th:text="${post.postID}"></td>
-            <td th:text="${post.postTypeName}"></td>
-            <td><a th:href="@{/post/{id}/before(id=${post.postID})}" th:text="${post.title}"></a></td>
-            <td th:text="${post.authorName}"></td>
-            <td th:text="${post.creationTime}"></td>
-            <td th:text="${post.views}"></td>
-        </tr>
+<!--        <tr th:each="post : ${posts}">-->
+<!--            <td th:text="${post.postID}"></td>-->
+<!--            <td th:text="${post.postTypeName}"></td>-->
+<!--            <td><a th:href="@{/post/{id}/before(id=${post.postID})}" th:text="${post.title}"></a></td>-->
+<!--            <td th:text="${post.authorName}"></td>-->
+<!--            <td th:text="${post.creationTime}"></td>-->
+<!--            <td th:text="${post.views}"></td>-->
+<!--        </tr>-->
         </tbody>
     </table>
 </div>
+<div>
+    <table id="pages">
+        <thead>
+        <tr>
+
+        </tr>
+        </thead>
+    </table>
+</div>
 <a href="/post/write"><button>글쓰기</button></a>
+<script src="js/board.js"></script>
 </body>
 </html>
