@@ -52,4 +52,14 @@
         ORDER BY postID
         LIMIT #{startIndex}, #{postCount}
     </select>
+    <select id="GetPostAmountWithBoard" parameterType="int" resultType="int">
+        SELECT COUNT(postType)
+        FROM posts
+        WHERE postType = #{boardID}
+    </select>
+    <select id="GetPostAmount" resultType="int">
+        SELECT COUNT(postType)
+        FROM posts
+    </select>
+
 </mapper>

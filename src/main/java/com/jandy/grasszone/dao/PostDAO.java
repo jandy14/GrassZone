@@ -17,5 +17,8 @@ public interface PostDAO {
                                     @Param("postCount") int postCount) throws Exception;
     PostDTO GetPostWithPostID(int postID) throws Exception;
     void IncreaseViews(int postID) throws Exception;
+    int GetPostAmountWithBoard(int boardID) throws Exception;
+    int GetPostAmount() throws Exception;
+
 
 }
