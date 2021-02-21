@@ -18,7 +18,7 @@ public class CacheHeaderFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         System.out.println("filter activate");
         System.out.println(((HttpServletRequest)request).getRequestURL());
-        ((HttpServletResponse)response).addHeader("Cache-Control", "no-store");
+//        ((HttpServletResponse)response).addHeader("Cache-Control", "no-store");
         chain.doFilter(request,response);
 
         // 왜 여기서 헤더를 추가하면 적용이 안되는 것인지

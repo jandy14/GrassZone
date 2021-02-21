@@ -5,6 +5,7 @@ import com.jandy.grasszone.dto.CommentDTO;
 import com.jandy.grasszone.dto.UserDTO;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,7 +24,11 @@ public class CommentController {
     public ModelAndView GetPostComments(@PathVariable("postID") int postID ) throws Exception {
         List<CommentDTO> comments = commentDAO.GetPostComments(postID);
 //        System.out.println(comments);
+
         ModelAndView modelAndView = new ModelAndView("comments.html");
+//        ModelMap model = modelAndView.getModelMap();
+//        model.addAttribute("comments", comments);
+//        modelAndView.addAllObjects(model);
         modelAndView.addObject("comments", comments);
         return modelAndView;
     }
